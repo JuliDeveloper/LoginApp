@@ -9,10 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet var greetingsLable: UILabel!
+    
+    var userName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        greetingsLable.text = userName
     }
-    
-
 }
