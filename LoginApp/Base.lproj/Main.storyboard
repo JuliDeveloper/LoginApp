@@ -38,7 +38,6 @@
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logInButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="AE9-RL-ENm"/>
-                                    <segue destination="9Go-VS-Aa4" kind="show" id="sCs-4f-6dR"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="avY-7h-f8S">
@@ -79,6 +78,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="DmX-g7-uM9" id="RrR-Sv-kpZ"/>
                         <outlet property="userNameTF" destination="DHH-wD-ODk" id="2qe-7Z-iUC"/>
+                        <segue destination="9Go-VS-Aa4" kind="show" identifier="showMainVC" id="zgP-pj-Za0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -93,6 +93,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaM-3z-7ZW">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXn-Vt-BsD">
                                 <rect key="frame" x="207" y="164" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -118,28 +122,36 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="APR-mY-QQr"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="APR-mY-QQr" firstAttribute="bottom" secondItem="0jG-Il-zRK" secondAttribute="bottom" constant="120" id="5LS-46-lA5"/>
                             <constraint firstItem="d2A-AZ-Jn7" firstAttribute="centerX" secondItem="LfD-fn-foi" secondAttribute="centerX" id="CRu-DM-LI0"/>
                             <constraint firstItem="d2A-AZ-Jn7" firstAttribute="top" secondItem="YXn-Vt-BsD" secondAttribute="bottom" constant="50" id="JdE-Mv-e35"/>
+                            <constraint firstItem="XaM-3z-7ZW" firstAttribute="leading" secondItem="APR-mY-QQr" secondAttribute="leading" id="Jpl-GO-iYd"/>
+                            <constraint firstAttribute="bottom" secondItem="XaM-3z-7ZW" secondAttribute="bottom" id="KdG-p3-Hix"/>
+                            <constraint firstItem="XaM-3z-7ZW" firstAttribute="top" secondItem="LfD-fn-foi" secondAttribute="top" id="N8p-8F-cen"/>
                             <constraint firstItem="YXn-Vt-BsD" firstAttribute="centerX" secondItem="LfD-fn-foi" secondAttribute="centerX" id="Xgz-5d-uQ3"/>
+                            <constraint firstItem="XaM-3z-7ZW" firstAttribute="trailing" secondItem="APR-mY-QQr" secondAttribute="trailing" id="YVF-vg-qhb"/>
                             <constraint firstItem="YXn-Vt-BsD" firstAttribute="top" secondItem="APR-mY-QQr" secondAttribute="top" constant="120" id="d1F-37-F2r"/>
                             <constraint firstItem="0jG-Il-zRK" firstAttribute="centerX" secondItem="LfD-fn-foi" secondAttribute="centerX" id="xju-Dh-epE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yxf-Dh-MvM"/>
                     <connections>
+                        <outlet property="backgroundGradientView" destination="XaM-3z-7ZW" id="NaX-lu-OMQ"/>
                         <outlet property="greetingsLable" destination="YXn-Vt-BsD" id="nIa-L1-HPI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJ2-8z-IVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DOa-0f-zZ7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="772" y="78"/>
+            <point key="canvasLocation" x="771.01449275362324" y="77.678571428571431"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

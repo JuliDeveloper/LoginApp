@@ -14,9 +14,24 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        userNameTF.delegate = self
+        passwordTF.delegate = self
+        
+        userNameTF.returnKeyType = .next
+        passwordTF.returnKeyType = .done
+        passwordTF.enablesReturnKeyAutomatically = true
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let greetingsVC = segue.destination as? MainViewController else { return }
+        
+        greetingsVC.userName = "Welcome, \(userNameTF.text ?? "")"
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func logInButton() {
         if userNameTF.text!.isEmpty && passwordTF.text!.isEmpty {
             createAlertController(with: "Invalid login or password",
@@ -27,6 +42,8 @@ class LogInViewController: UIViewController {
             createAlertController(with: "Invalid login or password",
                                   and: "Please, correct enter login and password")
         }
+        
+        performSegue(withIdentifier: "showMainVC", sender: logInButton)
     }
     
     @IBAction func forgotUserNameButton() {
@@ -40,17 +57,9 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
-        
+        userNameTF.text = ""
+        passwordTF.text = ""
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let greetingsVC = segue.destination as? MainViewController else { return }
-        
-        greetingsVC.userName = "Welcome, \(userNameTF.text ?? "")"
-    }
-}
-
-extension LogInViewController {
     
     private func createAlertController(with title: String, and message: String) {
         let alertControler = UIAlertController(title: title,
@@ -63,4 +72,22 @@ extension LogInViewController {
         alertControler.addAction(alertAction)
         present(alertControler, animated: true)
     }
+}
+
+//MARK: UITextFieldDelegate
+extension LogInViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == userNameTF {
+            passwordTF.becomeFirstResponder()
+        } else {
+            passwordTF.resignFirstResponder()
+        }
+    
+        performSegue(withIdentifier: "showMainVC", sender: UIReturnKeyType.self)
+        
+        return true
+    }
+    
 }
