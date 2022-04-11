@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     }
     
     override var shouldAutorotate: Bool {
-            return false
+            false
         }
     
     private func createdGradiend() {

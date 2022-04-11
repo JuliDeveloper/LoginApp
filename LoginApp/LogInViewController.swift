@@ -24,8 +24,9 @@ class LogInViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let greetingsVC = segue.destination as? MainViewController else { return }
+        guard let user = userNameTF.text else { return }
         
-        greetingsVC.userName = "Welcome, \(userNameTF.text ?? "")"
+        greetingsVC.userName = "Welcome, \(user)"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -33,17 +34,9 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButton() {
-        if userNameTF.text!.isEmpty && passwordTF.text!.isEmpty {
-            createAlertController(with: "Invalid login or password",
-                                  and: "Please, correct enter login and password")
+        if validationLogIn() {
+            performSegue(withIdentifier: "showMainVC", sender: logInButton)
         }
-        
-        if passwordTF.text != "Password" {
-            createAlertController(with: "Invalid login or password",
-                                  and: "Please, correct enter login and password")
-        }
-        
-        performSegue(withIdentifier: "showMainVC", sender: logInButton)
     }
     
     @IBAction func forgotUserNameButton() {
@@ -61,10 +54,23 @@ class LogInViewController: UIViewController {
         passwordTF.text = ""
     }
     
+    private func validationLogIn() -> Bool {
+        guard let userName = userNameTF.text else { return false }
+        guard let password = passwordTF.text else { return false }
+        
+        if userName.isEmpty || password.isEmpty || passwordTF.text != "Password" {
+            createAlertController(with: "Invalid login or password",
+                                  and: "Please, correct enter login and password")
+        }
+        
+        return true
+    }
+    
     private func createAlertController(with title: String, and message: String) {
         let alertControler = UIAlertController(title: title,
                                                message: message,
                                                preferredStyle: .alert)
+        
         let alertAction = UIAlertAction(title: "OK", style: .default) { _ in
             self.passwordTF.text = ""
         }
@@ -84,8 +90,10 @@ extension LogInViewController: UITextFieldDelegate {
         } else {
             passwordTF.resignFirstResponder()
         }
-    
-        performSegue(withIdentifier: "showMainVC", sender: UIReturnKeyType.self)
+        
+        if validationLogIn() {
+            performSegue(withIdentifier: "showMainVC", sender: UIReturnKeyType.done)
+        }
         
         return true
     }
