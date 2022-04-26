@@ -12,8 +12,8 @@ class LogInViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    let userName = "User"
-    let password = "Password"
+    private let userName = "User"
+    private let password = "Password"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,14 +91,10 @@ extension LogInViewController: UITextFieldDelegate {
         
         if textField == userNameTF {
             passwordTF.becomeFirstResponder()
-        } else {
+        } else if validationLogIn() {
             passwordTF.resignFirstResponder()
-        }
-        
-        if validationLogIn() {
             performSegue(withIdentifier: "showMainVC", sender: UIReturnKeyType.done)
         }
-        
         return true
     }
     
