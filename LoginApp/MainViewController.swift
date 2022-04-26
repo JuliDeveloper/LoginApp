@@ -14,18 +14,13 @@ class MainViewController: UIViewController {
    
     var userName: String!
     
-    override func viewWillAppear(_ animated: Bool) {
-        createdGradiend()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createdGradiend()
+        
         greetingsLable.text = userName
     }
-    
-    override var shouldAutorotate: Bool {
-            false
-        }
     
     private func createdGradiend() {
         let gradient = CAGradientLayer()
