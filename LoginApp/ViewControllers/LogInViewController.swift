@@ -12,24 +12,36 @@ class LogInViewController: UIViewController {
     @IBOutlet var userNameTF: UITextField!
     @IBOutlet var passwordTF: UITextField!
     
-    private let userName = "User"
-    private let password = "Password"
+    @IBOutlet var loginButton: UIButton!
+    
+    private let person = User.getUserInfo()
+    private let gradient = gradientModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.createdGradiendForLoginController(topColor: gradient.topColor, bottomColor: gradient.bottomColor)
+        
         userNameTF.delegate = self
         passwordTF.delegate = self
         
         userNameTF.returnKeyType = .next
         passwordTF.returnKeyType = .done
         passwordTF.enablesReturnKeyAutomatically = true
+        
+        loginButton.layer.cornerRadius = Radius.cornerRadius
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let greetingsVC = segue.destination as? MainViewController else { return }
-        guard let user = userNameTF.text else { return }
         
-        greetingsVC.userName = "Welcome, \(user)"
+        let tabBarController = segue.destination as! UITabBarController
+        guard let viewControllers = tabBarController.viewControllers else { return }
+      
+        for viewController in viewControllers {
+                    if let greetingsVC = viewController as? MainViewController {
+                        greetingsVC.userName = "Привет, \(person.person.name)!"
+                    }
+                }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,13 +56,13 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func forgotUserNameButton() {
-        createAlertController(with: "Oops!",
-                              and: "Your name is \(userName) ☺️")
+        createAlertController(with: "Ой!",
+                              and: "Ваше имя - \(person.username) ☺️")
     }
     
     @IBAction func forgotPasswordButton() {
-        createAlertController(with: "Oops!",
-                              and: "Your password is \(password) 😊")
+        createAlertController(with: "Ой!",
+                              and: "Ваш пароль - \(person.password) 😊")
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -62,9 +74,9 @@ class LogInViewController: UIViewController {
         guard let userName = userNameTF.text else { return false }
         guard let password = passwordTF.text else { return false }
         
-        if userName.isEmpty || password.isEmpty || userNameTF.text != self.userName || passwordTF.text != self.password {
-            createAlertController(with: "Invalid login or password",
-                                  and: "Please, correct enter login and password")
+        if userName.isEmpty || password.isEmpty || userNameTF.text != person.username || passwordTF.text! != person.password {
+            createAlertController(with: "Не праильный ввод данных",
+                                  and: "Пожалуйста, введите корректное имя и пароль")
         }
         
         return true
@@ -98,4 +110,16 @@ extension LogInViewController: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension UIView {
+    func createdGradiendForLoginController(topColor: UIColor, bottomColor: UIColor) {
+        let gradient = CAGradientLayer()
+        gradient.frame = bounds
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        layer.insertSublayer(gradient, at: 0)
+    }
 }
