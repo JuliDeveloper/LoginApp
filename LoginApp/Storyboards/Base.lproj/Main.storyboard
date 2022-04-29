@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-qO-cdn">
-                                <rect key="frame" x="20" y="150" width="280" height="204"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="QW9-qO-cdn">
+                                <rect key="frame" x="20" y="140" width="280" height="224"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fvX-Gl-6qg">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="98"/>
@@ -35,7 +35,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ge3-zr-hFz">
-                                        <rect key="frame" x="0.0" y="118" width="280" height="36"/>
+                                        <rect key="frame" x="0.0" y="128" width="280" height="36"/>
                                         <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -47,7 +47,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="avY-7h-f8S">
-                                        <rect key="frame" x="0.0" y="174" width="280" height="30"/>
+                                        <rect key="frame" x="0.0" y="194" width="280" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="w3q-Ne-KsR">
                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="-353" y="77"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="VBL-CR-BtS">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="9Go-VS-Aa4" customClass="MainViewController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="9Go-VS-Aa4" customClass="WelcomeViewController" customModule="LoginApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LfD-fn-foi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,7 +130,7 @@
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="DOa-0f-zZ7" kind="unwind" unwindAction="unwindFor:" id="OHH-hh-YJB"/>
+                                    <segue destination="DOa-0f-zZ7" kind="unwind" unwindAction="unwindFor:" id="wE8-fK-ka0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -175,11 +175,10 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="button" destination="6sG-iD-hRO" eventType="touchUpInside" id="Lbj-vC-jYq"/>
                                     <segue destination="JvJ-xT-lgK" kind="show" id="Od9-Ck-RVQ"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hands" translatesAutoresizingMaskIntoConstraints="NO" id="vAB-cK-p34">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vAB-cK-p34">
                                 <rect key="frame" x="76.5" y="81" width="167" height="177"/>
                             </imageView>
                         </subviews>
@@ -198,12 +197,12 @@
                     <navigationItem key="navigationItem" id="b9I-YH-4bY"/>
                     <connections>
                         <outlet property="centerImage" destination="vAB-cK-p34" id="YNY-a6-pQX"/>
-                        <outlet property="infoButton" destination="02m-sE-56n" id="hXW-bM-DVK"/>
+                        <outlet property="infoButton" destination="02m-sE-56n" id="iRM-cz-gvE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEe-zm-POJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="363.75" y="1628.8732394366198"/>
+            <point key="canvasLocation" x="364" y="1632"/>
         </scene>
         <!--Обо мне-->
         <scene sceneID="1RS-Pw-yd2">
@@ -531,6 +530,9 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X8d-vi-REB">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="UaZ-m7-Kyq" kind="relationship" relationship="rootViewController" id="PF7-mq-mvV"/>
                     </connections>
@@ -566,7 +568,6 @@
         <segue reference="DbG-8T-4Va"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Hands" width="210.5" height="210.5"/>
         <image name="hands.sparkles.fill" catalog="system" width="125" height="128"/>
         <image name="network" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

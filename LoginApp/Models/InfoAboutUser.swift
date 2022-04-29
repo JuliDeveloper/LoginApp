@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+
 struct Photo {
+    
     let user: String
     let smile: String
     let image: String
@@ -38,8 +40,6 @@ struct Photo {
     }
 }
 
-var photoModel = Photo.getPhoto()
-
 struct Person {
     let name: String
     let surename: String
@@ -55,23 +55,21 @@ struct Person {
             age: "25",
             instagram: "https://www.instagram.com/_drekra_/",
             vk: "https://vk.com/drekra",
-            photo: photoModel
+            photo: Photo.getPhoto()
         )
     }
 }
 
-var personModel = Person.getPersonInfo()
-
 struct User {
     let username: String
     let password: String
-    let person: Person
+    var person: Person
     
     static func getUserInfo() -> User {
         User(
             username: "User",
             password: "Password",
-            person: personModel
+            person: Person.getPersonInfo()
         )
     }
 }

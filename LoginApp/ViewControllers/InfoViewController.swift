@@ -13,32 +13,20 @@ class InfoViewController: UIViewController {
     @IBOutlet var centerImage: UIImageView!
     @IBOutlet var infoButton: UIButton!
     
-    private let person = personModel
-    private let gradient = gradientModel
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createdGradiend()
         
-        view.createdGradiendForInfoController(topColor: gradient.topColor, bottomColor: gradient.bottomColor)
-        
-        centerImage.image = UIImage(named: person.photo.hands)
+        centerImage.image = UIImage(named: user.person.photo.hands)
         
         infoButton.layer.cornerRadius = Radius.cornerRadius
     }
     
-    @IBAction func button() {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let personVC = segue.destination as? PersonInfoViewController else { return }
+        personVC.user = user
     }
 }
 
-extension UIView {
-    func createdGradiendForInfoController(topColor: UIColor, bottomColor: UIColor) {
-        let gradient = CAGradientLayer()
-        gradient.frame = bounds
-        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        layer.insertSublayer(gradient, at: 0)
-    }
-}

@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		252864B62819A80E0038C9CD /* SocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252864B52819A80E0038C9CD /* SocialMediaViewController.swift */; };
-		252864BC2819C90D0038C9CD /* GragientColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252864BB2819C90D0038C9CD /* GragientColors.swift */; };
 		2580EA5428047C82001187EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2580EA5328047C82001187EF /* AppDelegate.swift */; };
 		2580EA5628047C82001187EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2580EA5528047C82001187EF /* SceneDelegate.swift */; };
 		2580EA5B28047C82001187EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2580EA5928047C82001187EF /* Main.storyboard */; };
 		2580EA5D28047C85001187EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2580EA5C28047C85001187EF /* Assets.xcassets */; };
 		2580EA6028047C85001187EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2580EA5E28047C85001187EF /* LaunchScreen.storyboard */; };
-		2580EA6828048148001187EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2580EA6728048148001187EF /* MainViewController.swift */; };
+		2580EA6828048148001187EF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2580EA6728048148001187EF /* WelcomeViewController.swift */; };
 		2580EA6A28048179001187EF /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2580EA6928048179001187EF /* LogInViewController.swift */; };
+		25A96A98281C17B700AC8D7D /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A96A97281C17B700AC8D7D /* Gradient.swift */; };
 		25FF50922819531A00204A07 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF50912819531A00204A07 /* InfoViewController.swift */; };
 		25FF50942819534200204A07 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF50932819534200204A07 /* PersonInfoViewController.swift */; };
 		25FF50962819562300204A07 /* InfoAboutUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF50952819562300204A07 /* InfoAboutUser.swift */; };
@@ -25,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		252864B52819A80E0038C9CD /* SocialMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaViewController.swift; sourceTree = "<group>"; };
-		252864BB2819C90D0038C9CD /* GragientColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GragientColors.swift; sourceTree = "<group>"; };
 		2580EA5028047C82001187EF /* LoginApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2580EA5328047C82001187EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2580EA5528047C82001187EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,8 +32,9 @@
 		2580EA5C28047C85001187EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2580EA5F28047C85001187EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2580EA6128047C85001187EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2580EA6728048148001187EF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2580EA6728048148001187EF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2580EA6928048179001187EF /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		25A96A97281C17B700AC8D7D /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		25FF50912819531A00204A07 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		25FF50932819534200204A07 /* PersonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonInfoViewController.swift; sourceTree = "<group>"; };
 		25FF50952819562300204A07 /* InfoAboutUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoAboutUser.swift; sourceTree = "<group>"; };
@@ -74,6 +74,7 @@
 			children = (
 				2592E385281834780095C7D7 /* ViewControllers */,
 				2592E3862818349A0095C7D7 /* Models */,
+				25A96A96281C174F00AC8D7D /* Extensions */,
 				2592E384281834690095C7D7 /* Storyboards */,
 				2592E3822818342D0095C7D7 /* App */,
 				2592E383281834540095C7D7 /* Resourse */,
@@ -112,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				2580EA6928048179001187EF /* LogInViewController.swift */,
-				2580EA6728048148001187EF /* MainViewController.swift */,
+				2580EA6728048148001187EF /* WelcomeViewController.swift */,
 				25FF50912819531A00204A07 /* InfoViewController.swift */,
 				25FF50932819534200204A07 /* PersonInfoViewController.swift */,
 				25FF50992819661C00204A07 /* LikeViewController.swift */,
@@ -126,9 +127,16 @@
 			isa = PBXGroup;
 			children = (
 				25FF50952819562300204A07 /* InfoAboutUser.swift */,
-				252864BB2819C90D0038C9CD /* GragientColors.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		25A96A96281C174F00AC8D7D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				25A96A97281C17B700AC8D7D /* Gradient.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,10 +217,10 @@
 				2580EA5628047C82001187EF /* SceneDelegate.swift in Sources */,
 				25FF50942819534200204A07 /* PersonInfoViewController.swift in Sources */,
 				25FF50922819531A00204A07 /* InfoViewController.swift in Sources */,
-				2580EA6828048148001187EF /* MainViewController.swift in Sources */,
+				2580EA6828048148001187EF /* WelcomeViewController.swift in Sources */,
 				252864B62819A80E0038C9CD /* SocialMediaViewController.swift in Sources */,
-				252864BC2819C90D0038C9CD /* GragientColors.swift in Sources */,
 				25FF509A2819661C00204A07 /* LikeViewController.swift in Sources */,
+				25A96A98281C17B700AC8D7D /* Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

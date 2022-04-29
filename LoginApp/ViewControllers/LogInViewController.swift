@@ -14,13 +14,11 @@ class LogInViewController: UIViewController {
     
     @IBOutlet var loginButton: UIButton!
     
-    private let person = User.getUserInfo()
-    private let gradient = gradientModel
+    private let user = User.getUserInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.createdGradiendForLoginController(topColor: gradient.topColor, bottomColor: gradient.bottomColor)
+        createdGradiend()
         
         userNameTF.delegate = self
         passwordTF.delegate = self
@@ -34,14 +32,22 @@ class LogInViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let tabBarController = segue.destination as! UITabBarController
+        guard let tabBarController = segue.destination as? UITabBarController else { return }
         guard let viewControllers = tabBarController.viewControllers else { return }
       
         for viewController in viewControllers {
-                    if let greetingsVC = viewController as? MainViewController {
-                        greetingsVC.userName = "Привет, \(person.person.name)!"
-                    }
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.user = user
+            } else if let navigationVC = viewController as? UINavigationController {
+                if let infoVC = navigationVC.topViewController as? InfoViewController {
+                    infoVC.user = user
+                } else if let likeNavigationVC = navigationVC.topViewController as? LikeViewController {
+                    likeNavigationVC.user = user
+                } else if let socialMediaVC = navigationVC.topViewController as? SocialMediaViewController {
+                    socialMediaVC.user = user
                 }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -57,12 +63,12 @@ class LogInViewController: UIViewController {
     
     @IBAction func forgotUserNameButton() {
         createAlertController(with: "Ой!",
-                              and: "Ваше имя - \(person.username) ☺️")
+                              and: "Ваше имя - \(user.username) ☺️")
     }
     
     @IBAction func forgotPasswordButton() {
         createAlertController(with: "Ой!",
-                              and: "Ваш пароль - \(person.password) 😊")
+                              and: "Ваш пароль - \(user.password) 😊")
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
@@ -71,10 +77,8 @@ class LogInViewController: UIViewController {
     }
     
     private func validationLogIn() -> Bool {
-        guard let userName = userNameTF.text else { return false }
-        guard let password = passwordTF.text else { return false }
         
-        if userName.isEmpty || password.isEmpty || userNameTF.text != person.username || passwordTF.text! != person.password {
+        if userNameTF.text != user.username || passwordTF.text! != user.password {
             createAlertController(with: "Не праильный ввод данных",
                                   and: "Пожалуйста, введите корректное имя и пароль")
         }
@@ -110,16 +114,4 @@ extension LogInViewController: UITextFieldDelegate {
         return true
     }
     
-}
-
-extension UIView {
-    func createdGradiendForLoginController(topColor: UIColor, bottomColor: UIColor) {
-        let gradient = CAGradientLayer()
-        gradient.frame = bounds
-        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
-        gradient.locations = [0.0, 1.0]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        layer.insertSublayer(gradient, at: 0)
-    }
 }
